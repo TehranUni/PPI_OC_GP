@@ -1,0 +1,4 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_C81,Hodgkin's granuloma,KRAS,9606.ENSP00000256078
+ICD10_C81,Hodgkin's granuloma,MET,9606.ENSP00000317272
+ICD10_C81,Hodgkin's granuloma,FGFR3,9606.ENSP00000339824

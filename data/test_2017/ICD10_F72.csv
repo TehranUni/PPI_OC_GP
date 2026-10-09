@@ -1,0 +1,9 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_F72,Severe mental retardation,STXBP1,9606.ENSP00000362399
+ICD10_F72,Severe mental retardation,KCNH1,9606.ENSP00000271751
+ICD10_F72,Severe mental retardation,MTOR,9606.ENSP00000354558
+ICD10_F72,Severe mental retardation,TMEM147,9606.ENSP00000222284
+ICD10_F72,Severe mental retardation,KCNQ3,9606.ENSP00000373648
+ICD10_F72,Severe mental retardation,SNAP25,9606.ENSP00000254976
+ICD10_F72,Severe mental retardation,COPB1,9606.ENSP00000249923
+ICD10_F72,Severe mental retardation,CSTB,9606.ENSP00000291568

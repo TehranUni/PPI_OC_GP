@@ -1,0 +1,19 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_F72,Severe mental retardation,NALCN,9606.ENSP00000251127
+ICD10_F72,Severe mental retardation,CAMK2G,9606.ENSP00000319060
+ICD10_F72,Severe mental retardation,CACNA1G,9606.ENSP00000352011
+ICD10_F72,Severe mental retardation,NOVA2,9606.ENSP00000263257
+ICD10_F72,Severe mental retardation,SCN8A,9606.ENSP00000346534
+ICD10_F72,Severe mental retardation,ATRX,9606.ENSP00000362441
+ICD10_F72,Severe mental retardation,FOXG1,9606.ENSP00000339004
+ICD10_F72,Severe mental retardation,ASXL1,9606.ENSP00000364839
+ICD10_F72,Severe mental retardation,NAGLU,9606.ENSP00000225927
+ICD10_F72,Severe mental retardation,TSC2,9606.ENSP00000219476
+ICD10_F72,Severe mental retardation,NAA10,9606.ENSP00000417763
+ICD10_F72,Severe mental retardation,PRMT7,9606.ENSP00000343103
+ICD10_F72,Severe mental retardation,RAB3GAP1,9606.ENSP00000411418
+ICD10_F72,Severe mental retardation,HDAC4,9606.ENSP00000264606
+ICD10_F72,Severe mental retardation,AGO1,9606.ENSP00000362300
+ICD10_F72,Severe mental retardation,HERC2,9606.ENSP00000261609
+ICD10_F72,Severe mental retardation,TMEM67,9606.ENSP00000389998
+ICD10_F72,Severe mental retardation,FLNA,9606.ENSP00000358866

@@ -1,0 +1,3 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_L40,Psoriases,ADRB2,9606.ENSP00000305372
+ICD10_L40,Psoriases,PSMB9,9606.ENSP00000363993

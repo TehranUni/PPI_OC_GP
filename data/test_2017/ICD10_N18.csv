@@ -1,0 +1,3 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_N18,"Kidney Failure, Chronic",GJA1,9606.ENSP00000282561
+ICD10_N18,"Kidney Failure, Chronic",PPARG,9606.ENSP00000287820

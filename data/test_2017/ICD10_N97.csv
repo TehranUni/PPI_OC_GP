@@ -1,0 +1,3 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_N97,"Infertility, Female",DNMT3B,9606.ENSP00000328547
+ICD10_N97,"Infertility, Female",AHR,9606.ENSP00000242057

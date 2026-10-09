@@ -1,0 +1,7 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_K44,Diaphragmatic Hernias,ATP7A,9606.ENSP00000345728
+ICD10_K44,Diaphragmatic Hernias,CCL2,9606.ENSP00000225831
+ICD10_K44,Diaphragmatic Hernias,CNTNAP2,9606.ENSP00000354778
+ICD10_K44,Diaphragmatic Hernias,TENM1,9606.ENSP00000403954
+ICD10_K44,Diaphragmatic Hernias,PLS3,9606.ENSP00000348163
+ICD10_K44,Diaphragmatic Hernias,MYRF,9606.ENSP00000278836

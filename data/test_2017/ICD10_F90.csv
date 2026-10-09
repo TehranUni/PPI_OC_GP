@@ -1,0 +1,7 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,CRY1,9606.ENSP00000008527
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,ADGRL1,9606.ENSP00000340688
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,RFX3,9606.ENSP00000371434
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,TCF20,9606.ENSP00000352463
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,VPS13B,9606.ENSP00000351346
+ICD10_F90,Attention Deficit Disorder with Hyperactivity,MARK2,9606.ENSP00000385751

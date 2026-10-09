@@ -1,0 +1,3 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_D57,"Anemia, Sickle Cell",NFE2L2,9606.ENSP00000380252
+ICD10_D57,"Anemia, Sickle Cell",CFB,9606.ENSP00000416561

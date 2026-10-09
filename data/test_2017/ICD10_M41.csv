@@ -1,0 +1,4 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_M41,Scolioses,FBN1,9606.ENSP00000325527
+ICD10_M41,Scolioses,SLC9A6,9606.ENSP00000359729
+ICD10_M41,Scolioses,MYF5,9606.ENSP00000228644

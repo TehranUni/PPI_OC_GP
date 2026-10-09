@@ -1,0 +1,16 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_D83,Common Variable Immunodeficiency,TNFRSF13B,9606.ENSP00000261652
+ICD10_D83,Common Variable Immunodeficiency,ICOS,9606.ENSP00000319476
+ICD10_D83,Common Variable Immunodeficiency,NFKB2,9606.ENSP00000358983
+ICD10_D83,Common Variable Immunodeficiency,NFKB1,9606.ENSP00000226574
+ICD10_D83,Common Variable Immunodeficiency,CR2,9606.ENSP00000356024
+ICD10_D83,Common Variable Immunodeficiency,CD40LG,9606.ENSP00000359663
+ICD10_D83,Common Variable Immunodeficiency,CD81,9606.ENSP00000263645
+ICD10_D83,Common Variable Immunodeficiency,TNFSF13,9606.ENSP00000343505
+ICD10_D83,Common Variable Immunodeficiency,IRF2BP2,9606.ENSP00000355568
+ICD10_D83,Common Variable Immunodeficiency,PRKCD,9606.ENSP00000331602
+ICD10_D83,Common Variable Immunodeficiency,CTNNBL1,9606.ENSP00000355050
+ICD10_D83,Common Variable Immunodeficiency,TNFRSF13C,9606.ENSP00000291232
+ICD10_D83,Common Variable Immunodeficiency,IKZF1,9606.ENSP00000331614
+ICD10_D83,Common Variable Immunodeficiency,IL21R,9606.ENSP00000338010
+ICD10_D83,Common Variable Immunodeficiency,MBL2,9606.ENSP00000363079

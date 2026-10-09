@@ -1,0 +1,50 @@
+disease_id,disease_name,Gene_number
+ICD10_C16,['Malignant neoplasm of stomach'],79
+ICD10_C18,['Malignant neoplasm of colon'],41
+ICD10_C43,['Malignant melanoma of skin'],34
+ICD10_C45,['Mesothelioma'],31
+ICD10_C50,"['Cancer, Breast']",412
+ICD10_C56,"['Cancer, Ovarian']",92
+ICD10_C67,['Malignant neoplasm of bladder'],150
+ICD10_C81,"[""Hodgkin's granuloma""]",20
+ICD10_D57,"['Anemia, Sickle Cell']",16
+ICD10_D83,['Common Variable Immunodeficiency'],17
+ICD10_E10,"['Diabetes Mellitus, Insulin-Dependent']",79
+ICD10_E11,['Adult-Onset Diabetes Mellitus'],205
+ICD10_E66,['Obesity'],212
+ICD10_E84,['Cystic Fibrosis'],33
+ICD10_F20,['Schizophrenias'],627
+ICD10_F31,['Bipolar Disorders'],335
+ICD10_F72,['Severe mental retardation'],26
+ICD10_F90,['Attention Deficit Disorder with Hyperactivity'],19
+ICD10_G10,"['Chorea, Huntington']",25
+ICD10_G20,['Parkinson Disease'],105
+ICD10_G24,['Dystonia'],20
+ICD10_G30,['Alzheimer Disease'],148
+ICD10_G35,['Multiple Sclerosis'],83
+ICD10_G40,['Epilepsies'],90
+ICD10_G43,['MIGRAINE HEADACHE'],19
+ICD10_G91,['Hydrocephaly'],17
+ICD10_H40,['Glaucomas'],17
+ICD10_I10,['Essential hypertension'],28
+ICD10_I25,['Chronic ischemic heart disease'],109
+ICD10_I42,['Cardiomyopathy'],122
+ICD10_I46,"['Arrest, Heart']",16
+ICD10_I50,['Heart failure'],127
+ICD10_I63,['Cerebral Infarction'],29
+ICD10_I70,['Atherosclerosis'],55
+ICD10_J45,['Asthma'],154
+ICD10_J80,"['Respiratory Distress Syndrome, Adult']",43
+ICD10_K44,['Diaphragmatic Hernias'],46
+ICD10_K51,['Ulcerative colitis'],60
+ICD10_L20,['Atopic Eczema'],49
+ICD10_L40,['Psoriases'],56
+ICD10_L80,['Vitiligo'],29
+ICD10_M32,['SYSTEMIC LUPUS ERYTHEMATOSIS'],80
+ICD10_M41,['Scolioses'],21
+ICD10_N04,['Nephrotic Syndrome'],65
+ICD10_N17,"['Kidney Failure, Acute']",71
+ICD10_N18,"['Kidney Failure, Chronic']",73
+ICD10_N46,"['Infertility, Male']",60
+ICD10_N80,['Endometrioses'],118
+ICD10_N97,"['Infertility, Female']",24

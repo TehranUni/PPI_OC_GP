@@ -1,0 +1,8 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_K51,Ulcerative colitis,ALB,9606.ENSP00000295897
+ICD10_K51,Ulcerative colitis,HP,9606.ENSP00000348170
+ICD10_K51,Ulcerative colitis,C3,9606.ENSP00000245907
+ICD10_K51,Ulcerative colitis,CFB,9606.ENSP00000416561
+ICD10_K51,Ulcerative colitis,APOA4,9606.ENSP00000350425
+ICD10_K51,Ulcerative colitis,IRF4,9606.ENSP00000370343
+ICD10_K51,Ulcerative colitis,GPR65,9606.ENSP00000267549

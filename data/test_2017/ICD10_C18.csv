@@ -1,0 +1,11 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_C18,Malignant neoplasm of colon,APC,9606.ENSP00000257430
+ICD10_C18,Malignant neoplasm of colon,MSH2,9606.ENSP00000233146
+ICD10_C18,Malignant neoplasm of colon,PMS2,9606.ENSP00000265849
+ICD10_C18,Malignant neoplasm of colon,CDH1,9606.ENSP00000261769
+ICD10_C18,Malignant neoplasm of colon,ATM,9606.ENSP00000278616
+ICD10_C18,Malignant neoplasm of colon,CHEK2,9606.ENSP00000372023
+ICD10_C18,Malignant neoplasm of colon,POLE,9606.ENSP00000322570
+ICD10_C18,Malignant neoplasm of colon,PKHD1,9606.ENSP00000360158
+ICD10_C18,Malignant neoplasm of colon,PIK3R5,9606.ENSP00000392812
+ICD10_C18,Malignant neoplasm of colon,IL7R,9606.ENSP00000306157

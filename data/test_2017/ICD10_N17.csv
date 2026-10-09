@@ -1,0 +1,7 @@
+disease_id,disease_name,gene_symbol,ensembl
+ICD10_N17,"Kidney Failure, Acute",TLR4,9606.ENSP00000363089
+ICD10_N17,"Kidney Failure, Acute",NFKB1,9606.ENSP00000226574
+ICD10_N17,"Kidney Failure, Acute",TLR2,9606.ENSP00000260010
+ICD10_N17,"Kidney Failure, Acute",CCT7,9606.ENSP00000258091
+ICD10_N17,"Kidney Failure, Acute",LRG1,9606.ENSP00000302621
+ICD10_N17,"Kidney Failure, Acute",ADRB2,9606.ENSP00000305372
