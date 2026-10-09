@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Runtime outputs
+models/
+results/
+logs/
+log/
+data/DROCC/
+
+# Model artefacts
+*.gpickle
+*.pt
+*.tar
+*.log

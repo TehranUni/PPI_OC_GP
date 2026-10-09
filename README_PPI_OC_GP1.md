@@ -8,7 +8,7 @@ Implementation of the benchmark in **"Benchmarking one-class learning methods fo
 
 Disease gene prioritization is not a conventional supervised task. A gene with no recorded association to a disease cannot be treated as a true negative: the absence of evidence usually reflects incomplete knowledge or uneven annotation rather than genuine non-involvement. Labelling every unannotated gene as negative therefore introduces label uncertainty.
 
-This motivates a **strictly one-class** formulation. For each disease the model is trained only on the set of genes confirmed as disease-associated before a temporal cutoff. Every remaining gene forms a single unlabeled candidate pool, which the model ranks by its anomaly score. No negative or unlabeled example is seen during training.
+This motivates a **positive–unlabeled** formulation. For each disease the reliable signal is the set of genes confirmed as disease-associated before a temporal cutoff. Every remaining gene forms a single unlabeled candidate pool, which the model ranks by its anomaly score. Most methods here are strictly one-class on the confirmed positives; the DROCC variants additionally draw a small sample of unlabeled candidates into training to sharpen the decision boundary. No disease gene that arrived after the cutoff is ever seen during training.
 
 ## Benchmark design
 
@@ -27,26 +27,35 @@ The temporal split is central to the design. A random split lets later discoveri
 
 Ten configurations are compared across five methodological families, spanning classical kernel methods to deep and graph-based one-class models.
 
-| Script | Family | Configurations | Reference |
-|---|---|---|---|
-| `baselinemodels.py` | One-Class Support Vector Machine | `OCSVM` | Schölkopf et al., 2001 |
-| `deep_svdd_gene.py` | Deep Support Vector Data Description | `DeepSVDD` | Ruff et al., 2018 |
-| `DROCC_deepsvdd.ipynb` | Deep Robust One-Class Classification | `DROCC-deepsvdd` | Goyal et al., 2020 |
-| `DROCC_LF.ipynb` | Deep Robust One-Class Classification | `DROCC-LF1` | Goyal et al., 2020 |
-| `ocgnn_gene.py` | One-Class Graph Neural Network | `OCGNN-GCN`, `OCGNN-GAT`, `OCGNN-GraphSAGE` | Wang et al., 2019 |
-| `olga_gene.py` | One-Class Graph Autoencoder | `OLGA/graph`, `OLGA/knn` | Golò et al., 2024 |
+| Script | Family | Configurations                              | Reference |
+|---|---|---------------------------------------------|---|
+| `src/baselinemodels.py` | One-Class Support Vector Machine | `OCSVM`                                     | Schölkopf et al., 2001 |
+| `src/deep_svdd_gene.py` | Deep Support Vector Data Description | `DeepSVDD`                                  | Ruff et al., 2018 |
+| `src/drocc_deepsvdd.py` | Deep Robust One-Class Classification | `DROCC-deepsvdd`                            | Goyal et al., 2020 |
+| `src/drocc_lf.py` | Deep Robust One-Class Classification, local fine-tuning | `DROCC-LF1`,  `DROCC-LF2`                   | Goyal et al., 2020 |
+| `src/ocgnn_gene.py` | One-Class Graph Neural Network | `OCGNN-GCN`, `OCGNN-GAT`, `OCGNN-GraphSAGE` | Wang et al., 2019 |
+| `src/olga_gene.py` | One-Class Graph Autoencoder | `OLGA/graph`, `OLGA/knn`                    | Golò et al., 2024 |
 
-`DROCC-LF1` extends DROCC with a limited set of close-negative examples and replaces Euclidean distance with a Mahalanobis-based distance to better characterise local geometry in high-dimensional feature spaces. `OLGA/knn` builds a nearest-neighbour graph in embedding space rather than using the real interaction network.
+`DROCC-LF` extends DROCC with a limited set of close-negative examples and replaces Euclidean distance with a Mahalanobis-based distance to better characterise local geometry in high-dimensional feature spaces. 
+`OLGA/knn` builds a nearest-neighbour graph in embedding space rather than using the real interaction network.
 
 ## Repository layout
 
 ```
 PPI_OC_GP/
-├── baselinemodels.py       OCSVM baseline + shared metric helpers (AUAC, recall@k)
-├── deep_svdd_gene.py       DeepSVDD: MLP encoder trained to collapse positives onto a hypersphere
-├── drocc.py                DROCC pipeline A (deepsvdd) and pipeline B (DROCC-LF, close negatives)
-├── ocgnn_gene.py       OCGNN: GCN / GAT / GraphSAGE encoders with a deviation-net one-class loss
-├── olga_gene.py            OLGA: GAT graph autoencoder + logistic one-class loss, on real or kNN graph
+├── src/
+│   ├── baselinemodels.py     OCSVM baseline + shared metric helpers (AUAC, recall@k)
+│   ├── deep_svdd_gene.py     DeepSVDD: MLP encoder trained to collapse positives onto a hypersphere
+│   ├── drocc_deepsvdd.py     DROCC: adversarial compactness boundary, one-class on positives
+│   ├── drocc_lf.py           DROCC-LF: Mahalanobis projection plus close-negative fine-tuning
+│   ├── ocgnn_gene.py         OCGNN: GCN / GAT / GraphSAGE encoders with a deviation-net one-class loss
+│   └── olga_gene.py          OLGA: GAT graph autoencoder + logistic one-class loss, on real or kNN graph
+├── data/                     benchmark inputs (see below)
+│   ├── disease_summary_2017.csv
+│   ├── ppi_2017_700_emb.csv
+│   ├── edge_list_2017_{500,700,800}.edg
+│   ├── train_2017/           49 files
+│   └── test_2017/            49 files
 └── README.md
 ```
 
@@ -55,38 +64,35 @@ PPI_OC_GP/
 Developed and tested on Python 3.9.
 
 ```
-numpy  pandas  scikit-learn  networkx
-torch  torch-geometric      # olga_gene.py, ocgnn_gene_dgl.py
-dgl                         # ocgnn_gene_dgl.py
+numpy  pandas  scikit-learn  networkx  torch        # all models
+dgl                                                 # ocgnn_gene.py
+torch-geometric                                     # olga_gene.py
 ```
 
 Verified against torch 2.2.0, dgl 1.1.2, torch-geometric 2.6.1, scikit-learn 0.24.2, networkx 2.5, numpy 1.26.4, pandas 2.2.3.
 
-A GPU is optional. `deep_svdd_gene.py`, `drocc.py` and `ocgnn_gene_dgl.py` detect CUDA automatically; `olga_gene.py` runs on CPU.
+A GPU is optional. `deep_svdd_gene.py`, `drocc_deepsvdd.py` and `ocgnn_gene.py` detect CUDA automatically; `olga_gene.py` runs on CPU.
 
 ## Data
 
+The benchmark inputs are included in this repository under `data/` (68 MB).
 
 ```
-main_data/
-├── 2017/
-│   ├── ppi_2017_700_emb.csv          node features, 15,554 x 129
-│   └── edge_list_2017_700.edg        PPI edges, tab-separated, 2 columns
-├── full/
-│   └── ppi_full_emb.csv              non-temporal variant
-└── train_data/
-    └── 2017/
-        ├── disease_summary.csv        disease registry, one row per disease
-        ├── train/<disease_id>.csv     genes known before the cutoff
-        ├── test/<disease_id>.csv      genes first reported from 2017 onward
-        └── close_neg/<disease_id>.csv close negatives, used by DROCC-LF1 only
+data/
+├── disease_summary_2017.csv        disease registry, one row per disease
+├── ppi_2017_700_emb.csv            node features, 15,554 x 129
+├── edge_list_2017_500.edg          PPI edges, combined_score > 500
+├── edge_list_2017_700.edg          PPI edges, combined_score > 700   <- used
+├── edge_list_2017_800.edg          PPI edges, combined_score > 800
+├── train_2017/                     genes known before the cutoff, 49 files
+└── test_2017/                      genes first reported from 2017 onward, 49 files
 ```
 
-`disease_summary.csv` carries a `disease_id` column and drives the per-disease loop. It lists 49 diseases; 47 are evaluated, after excluding `ICD10_L20` and `ICD10_F90`.
+`disease_summary.csv` carries `disease_id`, `disease_name` and `Gene_number`, and drives the per-disease loop. It lists 49 diseases; 47 are evaluated, after excluding `ICD10_L20` and `ICD10_F90`.
 
 ### File formats
 
-**`ppi_{year}_700_emb.csv`** — the feature matrix.
+**`ppi_2017_700_emb.csv`** — the feature matrix, one row per gene.
 
 ```
 string_id, feature_1, feature_2, ..., feature_128
@@ -94,9 +100,9 @@ string_id, feature_1, feature_2, ..., feature_128
 
 `string_id` holds STRING protein identifiers and is renamed to `ensembl` at load time, forming the join key against the disease gene lists. The remaining 128 columns are the Node2Vec embedding dimensions.
 
-**`edge_list_{year}_700.edg`** — tab-separated, no header. Columns 0 and 1 are the two endpoint gene identifiers. Additional columns, if present, are edge weights on a 0–1000 scale and are normalised by 1000.
+**`edge_list_2017_*.edg`** — tab-separated, no header, exactly two columns holding the endpoint protein identifiers of each interaction. Three confidence thresholds are provided; the graph models read the `700` variant, matching the filter applied to the embeddings.
 
-**`train/<disease_id>.csv` and `test/<disease_id>.csv`** — one row per gene.
+**`train_2017/<disease_id>.csv` and `test_2017/<disease_id>.csv`** — one row per gene.
 
 ```
 disease_id, disease_name, gene_symbol, ensembl
@@ -111,44 +117,37 @@ Every script labels the candidate pool by merging the feature matrix against the
 | `label` | `1` if the gene is a confirmed disease gene, `0` otherwise |
 | `test` | `0` for the training split, `1` for held-out positives and the unlabeled pool |
 
-The training set is `label == 1 & test == 0`. The evaluation set is every row with `test == 1` — the held-out positives plus the full unlabeled candidate pool. The scripts select features by dropping `ensembl`, `label` and `test`, so column order in the input file matters.
+The training set is `label == 1 & test == 0`. The evaluation set is every row with `test == 1` — the held-out positives plus the full unlabeled candidate pool. Features are selected by dropping `ensembl`, `label` and `test`, so column order in the input file matters.
 
 ### Provenance
 
 Derived from STRING v12 protein links for *Homo sapiens* (filtered at `combined_score > 700`), node2vec embeddings computed over the resulting PPI graph, and disease–gene associations from DisGeNET indexed by ICD-10.
 
-## Configuration
-
-Each script reads from a `path` constant defined near the top of the file. **Set this to your own data root before running.**
-
-
-Hyperparameters are configured differently in each script.
-
-The year is set per script (`year = 2017`) and selects both the feature matrix and the disease split.
-
 ## Running the benchmark
 
-Scripts are standalone drivers. Each loops over every disease in `disease_summary.csv` and writes per-disease scores plus an aggregate results file.
+Scripts are standalone drivers. Each loops over every disease in `disease_summary_2017.csv` and writes per-disease scores plus an aggregate results file.
 
 ```bash
-python baselinemodels.py
-python deep_svdd_gene.py
-python drocc.py
-python ocgnn_gene_dgl.py --module GraphSAGE
-python olga_gene.py
+python src/baselinemodels.py
+python src/deep_svdd_gene.py
+python src/drocc_deepsvdd.py
+python src/drocc_lf.py
+python src/ocgnn_gene.py --module GraphSAGE
+python src/olga_gene.py
 ```
 
-`drocc.py` contains two independent pipelines in separate `__main__` blocks — pipeline A trains DROCC on the pre-2017 positives, pipeline B trains DROCC-LF1 and DROCC-LF2 with close negatives. `ocgnn_gene_dgl.py` takes `--module` from `GCN`, `GAT`, `GraphSAGE`; run it once per module to reproduce all three configurations.
+`ocgnn_gene.py` takes `--module` from `GCN`, `GAT`, `GraphSAGE`; run it once per module to reproduce all three configurations.
 
 Output directories are **not** created automatically. Create them before running:
 
 ```
 models/OCSVM/{scores}/
 models/DeepSVDD/{scores,results,model}/
-models/DROCC/{deepsvdd/scores,LF/scores,LF/scores_train}/
 models/OCGNN/{scores,checkpoints}/
 models/OLGA/{scores,olga_knn_2017/<disease_id>/k=<k>}/
-results/{OCSVM,DeepSVDD,DROCC,OCGNN,OLGA}/
+data/DROCC/{scores,models,results}/
+results/{OCSVM,DeepSVDD,DROCC_LF1,OCGNN,OLGA}/
+log/
 ```
 
 ## Outputs
@@ -167,7 +166,7 @@ Files are sorted so the highest-priority candidates come first. Lower score mean
 Dataset, Train Size, Test Size, Positive Test, Negative Test, AUAC, R@5, R@10, R@30, R@100
 ```
 
-**Model checkpoints**, where the method keeps one: `model_<disease_id>_<year>.tar` for DeepSVDD, `{disease_id}+OC-<module>+bestcheckpoint.pt` for OCGNN, `model_<disease_id>_2019_new1.pt` and `model_LF1_2017_<disease_id>.pt` for DROCC. OLGA caches its graphs as `.gpickle` and saves no weights.
+**Model checkpoints**, where the method keeps one: `model_<disease_id>_<year>.tar` for DeepSVDD, `{disease_id}+OC-<module>+bestcheckpoint.pt` for OCGNN, `model_deep_<disease_id>_<year>.pt` for DROCC-deepsvdd, `model_LF1_<year>_<disease_id>.pt` for DROCC-LF. OLGA caches its graphs as `.gpickle` and saves no weights.
 
 ### Metrics
 
