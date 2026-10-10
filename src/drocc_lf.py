@@ -790,15 +790,6 @@ def lf_main(disease, node_data, year):
     train_loader, val_loader, test_loader, close_neg_loader = lf_load_data(train_data, val_data, test_data, train_lab, val_lab, test_lab, close_neg_data, close_neg_lab)
 
     ###for create close neg(LF2)
-    # train_nodes, test_nodes, train_lab, test_lab = read_data_lf(disease, node_data,year)
-    # train_data = train_nodes.drop(columns=['ensembl', 'label', 'test'])
-    # test_data = test_nodes.drop(columns=['ensembl', 'label', 'test'])
-    # train_loader, test_loader = lf_load_data(train_data, test_data, train_lab, test_lab, '', '')
-    # positive_embeddings = train_data.to_numpy(dtype=np.float32)
-    # close_neg_data = get_close_negs(positive_embeddings, radius=0.3, num_negatives_per_gene=3)
-    # # print(close_neg_data)
-    # close_neg_loader = DataLoader(close_neg_data, args.batch_size, shuffle=True)
-
 
     # train_nodes, val_nodes, test_nodes, train_lab, val_lab, test_lab = read_data_lf(disease,
     #                                                                                 node_data,year)
